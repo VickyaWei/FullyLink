@@ -1,0 +1,82 @@
+require("dotenv").config();
+const express = require('express');
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
+const userRoutes = require("./routes/users/users");
+const postRoutes = require("./routes/posts/posts");
+const commentRouters = require("./routes/comments/comments");
+const globalErrHandler = require("./middlewares/globalHandler");
+const Post = require("./models/post/Post");
+
+require("./config/dbConnect");
+
+const app = express();
+ 
+//middlewares
+
+//configure ejs 
+app.set('view engine', 'ejs');
+
+//server static files
+app.use(express.static(__dirname, + "/public"));
+
+app.use(express.json()); // pass incoming data
+
+app.use(express.urlencoded({extended: true})); //password data
+//session config
+app.use(
+    session({
+        secret: process.env.SESSION_KEY,
+        resave: false,
+        saveUninitialized: true,
+        store: new MongoStore({
+            mongoUrl: process.env.MONGO_URL,
+            ttl: 24*60*60,
+        }),
+    })
+); 
+
+
+//render home
+app.get('/', async (req, res) => {
+    
+    try {
+        const posts = await Post.find();
+        res.render('index.ejs', { posts });
+    } catch (error) {
+        res.render('index', {error: error.message});
+    }
+    
+});
+
+
+//-----
+//users route 
+//-----
+
+app.use("/api/v1/users", userRoutes);
+
+//-----
+//posts route
+//-----
+
+
+app.use("/api/v1/posts", postRoutes);
+
+
+//-----
+//comments route
+//-----
+
+app.use("/api/v1/comments", commentRouters);
+
+
+//Error handler middlewares
+
+app.use(globalErrHandler);
+//listen server
+
+
+
+const PORT = process.env.PORT || 8000;
+app.listen(PORT, console.log(`Server is running on PORT ${PORT}`));

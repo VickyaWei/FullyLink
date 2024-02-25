@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <title>Responsive design</title>
+  </head>
+  <body>
+    <!-- nav -->
+    <%-include('partials/navbar.ejs') %> 
+      
+
+    <!-- header -->
+    <header>
+      <div class="header-content">
+        <h1>Campus Social</h1>
+        <p>
+          <br>
+          Connect with fellow students at FullyLink <br>
+          Your vibrant hub for all things campus, where every click lights up a new possibility.
+        </p>
+        <a href="#">
+          <br>
+          <br>
+          <a href="/api/v1/posts/get-post-form" class="create-post-btn"
+          <span>Create New Post</span>
+        </a>
+      </div>
+    </header>
+    <!-- Latest post title -->
+
+    <div class="latest-post-title">
+      <!-- Icon -->
+      <div class="icon">
+        <i class="fas fa-book-open"></i>
+      </div>
+      <br>
+      <h1>&nbsp; Latest Posts &nbsp;(3)</h1>
+
+    </div>
+
+    <!-- content -->
+    <section class="container-flex">
+        <article class="post-content">
+          
+          <!--<img src="./images/post3.jpg" alt="" class="post-image" /> -->
+          <p class="post-info">
+            <span class="post-author">
+              <i class="fas fa-user"></i>
+              <a href="#">Jason Jiang</a>
+            </span>
+            <span class="post-date">
+              <i class="far fa-calendar-alt"></i>
+              <time datetime="2020-01-01">December 1, 2023</time>
+            </span>
+          </p><h1 class="post-title">ScholarshipOpportunity</h1>
+          <br>
+          <p class="post-body">
+            Exciting news! The university is launching a new scholarship program for STEM majors. 
+            Check your email for more details on how to apply. 
+          </p>
+          <!-- category -->
+          <div class="post-category">
+            <!--<span>Category:</span> -->
+          </div>
+          <a href="/" class="post-read-more">Continue Reading...</a>
+        </article>
+
+        <article class="post-content">
+          
+          <img src="./images/post7.jpg" alt="" class="post-image" />
+          <p class="post-info">
+            <span class="post-author">
+              <i class="fas fa-user"></i>
+              <a href="#">Angela Chen</a>
+            </span>
+            <span class="post-date">
+              <i class="far fa-calendar-alt"></i>
+              <time datetime="2020-01-01">December 25, 2023</time>
+            </span>
+          </p><h1 class="post-title">Volunteer</h1>
+          <br>
+          <p class="post-body">
+            Want to make a difference in the community? 
+            Our volunteer group is organizing a clean-up event at the local park this weekend. 
+            Sign up now to join us in keeping our environment clean and green!
+          </p>
+          <!-- category -->
+          <div class="post-category">
+            <!--<span>Category:</span> -->
+          </div>
+          <a href="/" class="post-read-more">Continue Reading...</a>
+        </article>
+
+        <article class="post-content">
+          
+          <img src="./images/post7.jpg" alt="" class="post-image" />
+          <p class="post-info">
+            <span class="post-author">
+              <i class="fas fa-user"></i>
+              <a href="#">Ping Di</a>
+            </span>
+            <span class="post-date">
+              <i class="far fa-calendar-alt"></i>
+              <time datetime="2020-01-01">January 1, 2024</time>
+            </span>
+          </p>
+          <h1 class="post-title">RoommateSearch</h1>
+          <br>
+          <p class="post-body">
+            Still looking for a roommate for next semester! 
+            I'm a quiet, tidy student majoring in Computer Science. 
+            If you're interested or know someone who might be, send me a message!
+          </p>
+          <!-- category -->
+          <div class="post-category">
+            <!--<span>Category:</span> -->
+            
+          </div>
+          <a href="/" class="post-read-more">Continue Reading...</a>
+        </article>  
+      
+    </section>
+    <!-- footer -->
+    <%-include('partials/footer.ejs') %>
+
+  </body>
+</html>
