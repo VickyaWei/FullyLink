@@ -16,4 +16,10 @@ const commentSchema = new mongoose.Schema(
     {
         timestamps: true,
     }
-)
+);
+
+//compile schema to form model
+const Comment = mongoose.model("Comment", commentSchema);
+
+//export model
+module.exports = Comment;

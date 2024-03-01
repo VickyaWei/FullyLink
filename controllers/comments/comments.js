@@ -1,11 +1,13 @@
+const Comment = require("../../models/comment/Comment");
 const Post = require("../../models/post/Post");
 const User = require("../../models/user/User");
-const Comment = require("../../models/comment/Comment");
+
+
 const appErr = require("../../utils/appErr");
 
 const createCommentCtrl = async (req, res, next) => {
-    const {message} = req.body;
-
+    const { message } = req.body;
+ 
     try{ 
         //find the post
         const post = await Post.findById(req.params.id);
@@ -18,7 +20,7 @@ const createCommentCtrl = async (req, res, next) => {
 
         //push the comment to post
         post.comments.push(comment._id);
-
+        
         //find the user
         const user = await User.findById(req.session.userAuth);
 

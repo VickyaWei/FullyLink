@@ -43,7 +43,7 @@ const createPostCtrl = async (req, res, next) => {
 //all
 const fetchPostsCtrl = async (req, res, next) => {
     try{
-        const posts = await Post.find();
+        const posts = await Post.find().populate('comments');
         res.json({
             status: "success",
             data: posts,
@@ -61,7 +61,7 @@ const fetchPostCtrl = async (req, res, next) => {
         const id = req.params.id;
 
         //find the post
-        const post = await Post.findById(id);
+        const post = await Post.findById(id).populate('comments');
 
         res.json({
             status: "success",
@@ -84,7 +84,7 @@ const deletePostCtrl = async (req, res, next) => {
             return next.appErr("You are not allowed to delete this post", 403);
         }
         //delete post
-        const deletedPost = await Post.findByIdAndDelete(req.params.id);
+        await Post.findByIdAndDelete(req.params.id);
 
         res.json({
             status: "success",
@@ -99,7 +99,7 @@ const deletePostCtrl = async (req, res, next) => {
 //update
 const updatePostCtrl = async (req, res) => {
     const {title, description, category} = req.body;
- 
+    
     try{
         //find the post 
         const post = await Post.findById(req.params.id);

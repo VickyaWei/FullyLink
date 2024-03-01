@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-body {
+body::after {
   background: #e39191;
   font-family: "Open Sans", sans-serif;
 }
@@ -23,6 +23,18 @@ body {
   align-items: center;
 }
 
+
+.form-container :before{
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right:-2px;
+  background: #fff;
+  z-index: -1;
+}
+
+
 .form-container h1 {
   text-align: center;
   margin: 10px;
@@ -40,6 +52,7 @@ body {
   outline: none;
   margin-bottom: 20px;
 }
+
 
 .form-container select {
   width: 100%;

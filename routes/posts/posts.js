@@ -1,5 +1,11 @@
 const express = require('express');
-const {createPostCtrl, fetchPostsCtrl, fetchPostCtrl, deletePostCtrl, updatePostCtrl}= require('../../controllers/posts/posts');
+const {
+    createPostCtrl, 
+    fetchPostsCtrl, 
+    fetchPostCtrl, 
+    deletePostCtrl, 
+    updatePostCtrl
+} = require('../../controllers/posts/posts');
 
 const multer = require("multer");
 const storage = require("../../config/cloudinary");

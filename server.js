@@ -4,7 +4,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const userRoutes = require("./routes/users/users");
 const postRoutes = require("./routes/posts/posts");
-const commentRouters = require("./routes/comments/comments");
+const commentRoutes = require("./routes/comments/comments");
 const globalErrHandler = require("./middlewares/globalHandler");
 const Post = require("./models/post/Post");
 
@@ -68,7 +68,7 @@ app.use("/api/v1/posts", postRoutes);
 //comments route
 //-----
 
-app.use("/api/v1/comments", commentRouters);
+app.use("/api/v1/comments", commentRoutes);
 
 
 //Error handler middlewares

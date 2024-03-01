@@ -75,7 +75,7 @@ const loginCtrl = async (req, res, next) => {
         req.session.userAuth = userFound._id;
 
         //redirect
-        res.redirect('/api/v1/users/profile-page');
+        //res.redirect('/api/v1/users/profile-page');
 
         res.json({
             status: "success",
@@ -113,7 +113,9 @@ const profileCtrl = async (req, res) => {
         const userId = req.session.userAuth;
 
         //find the user
-        const user = await User.findById(userId).populate("post").populate("comments");
+        const user = await User.findById(userId)
+            .populate("post")
+            .populate("comments");
 
         res.json({
             status: "success",
