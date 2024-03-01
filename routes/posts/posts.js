@@ -1,9 +1,9 @@
 const express = require('express');
 const {
-    createPostCtrl, 
-    fetchPostsCtrl, 
-    fetchPostCtrl, 
-    deletePostCtrl, 
+    createPostCtrl,
+    deletePostCtrl,
+    fetchPostCtrl,
+    fetchPostsCtrl,
     updatePostCtrl
 } = require('../../controllers/posts/posts');
 

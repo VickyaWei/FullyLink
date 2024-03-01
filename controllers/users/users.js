@@ -1,13 +1,13 @@
 
 const bcrypt = require("bcryptjs");
-const User = require("../../models/user/User");
+const User = require("../../model/user/User");
 const appErr = require("../../utils/appErr");
 
 //register
 const registerCtrl = async (req, res, next) => {
     const {fullname, email, password } = req.body;
 
-    //check if field i empty 
+    //check if field is empty 
     if(!fullname || !email || !password){
         //return next(appErr('All fields are required'));
         return res.render('users/register', {

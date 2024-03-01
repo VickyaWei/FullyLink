@@ -1,15 +1,13 @@
-const Comment = require("../../models/comment/Comment");
-const Post = require("../../models/post/Post");
-const User = require("../../models/user/User");
-
-
+const Comment = require("../../model/comment/Comment");
+const Post = require("../../model/post/Post");
+const User = require("../../model/user/User");
 const appErr = require("../../utils/appErr");
 
 const createCommentCtrl = async (req, res, next) => {
     const { message } = req.body;
- 
-    try{ 
-        //find the post
+    
+    try{
+        //Find the post
         const post = await Post.findById(req.params.id);
 
         //create the comment
@@ -20,7 +18,7 @@ const createCommentCtrl = async (req, res, next) => {
 
         //push the comment to post
         post.comments.push(comment._id);
-        
+
         //find the user
         const user = await User.findById(req.session.userAuth);
 
@@ -29,9 +27,8 @@ const createCommentCtrl = async (req, res, next) => {
 
         //disable validation
         //save
-        await post.save({validateBeforeSave: false});
-        await user.save({validateBeforeSave: false});
-
+        await post.save({ validateBeforeSave: false});
+        await user.save({ validateBeforeSave: false});
         res.json({
             status: "success",
             data: comment,
@@ -42,36 +39,60 @@ const createCommentCtrl = async (req, res, next) => {
 };
 
 
-const commentDetailCtrl = async (req, res) => {
+const commentDetailCtrl = async (req, res, next) => {
     try{
         res.json({
             status: "success",
             user: "Comments details",
         });
     } catch (error) {
-        res.json(error);
+        return next(appErr(error.message));
     }
 };
 
-const deleteCommentCtrl = async (req, res) => {
+const deleteCommentCtrl = async (req, res, next) => {
     try{
+        //find the comment 
+        const comment = await Comment.findById(req.params.id);
+
+        //check if the post belongs to the user
+        if(comment.user.toString() !== req.session.userAuth.toString()){
+            return next.appErr("You are not allowed to delete this comment", 403);
+        }
+        //delete post
+        await Comment.findByIdAndDelete(req.params.id);
         res.json({
             status: "success",
-            user: "Comments deleted",
-        });
+            user: "Comments has been deleted successfully",
+        });        
     } catch (error) {
-        res.json(error);
+        return next(appErr(error.message));
     }
 };
 
-const updateCommentCtrl = async (req, res) => {
+const updateCommentCtrl = async (req, res, next) => {
     try{
+        //find the comment 
+        const comment = await Comment.findById(req.params.id);
+
+        //check if the comment belongs to the user
+        if(comment.user.toString() !== req.session.userAuth.toString()){
+            return next.appErr("You are not allowed to update this comment", 403);
+        }
+
+        //update 
+        const commentUpdated = await Comment.findByIdAndUpdate(req.params.id, {
+            message: req.body.message,
+        },{
+            new: true,
+        });
+        
         res.json({
             status: "success",
-            user: "Comments updated",
+            data: commentUpdated,
         });
     } catch (error) {
-        res.json(error);
+        return next(appErr(error.message));
     }
 };
 

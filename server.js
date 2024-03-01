@@ -6,7 +6,7 @@ const userRoutes = require("./routes/users/users");
 const postRoutes = require("./routes/posts/posts");
 const commentRoutes = require("./routes/comments/comments");
 const globalErrHandler = require("./middlewares/globalHandler");
-const Post = require("./models/post/Post");
+const Post = require("./model/post/Post");
 
 require("./config/dbConnect");
 
@@ -18,7 +18,7 @@ const app = express();
 app.set('view engine', 'ejs');
 
 //server static files
-app.use(express.static(__dirname, + "/public"));
+app.use(express.static(__dirname + "/public"));
 
 app.use(express.json()); // pass incoming data
 
@@ -35,6 +35,17 @@ app.use(
         }),
     })
 ); 
+
+//save the login user into locals
+app.use((req, res, next) => {
+    if(req.session.userAuth){
+        res.locals.userAuth = req.session.userAuth;
+    }
+    else{
+        res.locals.userAuth = null;
+    }
+    next();
+});
 
 
 //render home
@@ -74,9 +85,8 @@ app.use("/api/v1/comments", commentRoutes);
 //Error handler middlewares
 
 app.use(globalErrHandler);
+
+
 //listen server
-
-
-
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, console.log(`Server is running on PORT ${PORT}`));
