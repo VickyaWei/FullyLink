@@ -4,28 +4,33 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <!-- Fontawesome -->
+    <script
+      src="https://kit.fontawesome.com/42a182743f.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/css/style.css" />
     <title>Responsive design</title>
   </head>
   <body>
     <!-- nav -->
-    <%-include('partials/navbar.ejs') %> 
-      
-
+    <%-include('./partials/navbar.ejs') %>  
     <!-- header -->
     <header>
       <div class="header-content">
-        <h1>Campus Social</h1>
+        <h1>You write, We read</h1>
         <p>
-          <br>
-          Connect with fellow students at FullyLink <br>
-          Your vibrant hub for all things campus, where every click lights up a new possibility.
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores
+          reiciendis
         </p>
         <a href="#">
-          <br>
-          <br>
-          <a href="/api/v1/posts/get-post-form" class="create-post-btn"
           <span>Create New Post</span>
         </a>
       </div>
@@ -37,34 +42,37 @@
       <div class="icon">
         <i class="fas fa-book-open"></i>
       </div>
-      <br>
-      <h1>&nbsp; Latest Posts &nbsp;(3)</h1>
-
+      <h1>Latest Posts (20)</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
+        voluptates.
+      </p>
     </div>
 
     <!-- content -->
     <section class="container-flex">
         <article class="post-content">
           
-          <!--<img src="./images/post3.jpg" alt="" class="post-image" /> -->
+          <img src="./images/post3.jpg" alt="" class="post-image" />
           <p class="post-info">
             <span class="post-author">
               <i class="fas fa-user"></i>
-              <a href="#">Jason Jiang</a>
+              <a href="#">John Doe</a>
             </span>
             <span class="post-date">
               <i class="far fa-calendar-alt"></i>
-              <time datetime="2020-01-01">December 1, 2023</time>
+              <time datetime="2020-01-01">January 1, 2020</time>
             </span>
-          </p><h1 class="post-title">ScholarshipOpportunity</h1>
-          <br>
+          </p><h1 class="post-title">Become a Web Developer</h1>
           <p class="post-body">
-            Exciting news! The university is launching a new scholarship program for STEM majors. 
-            Check your email for more details on how to apply. 
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia
+            itaque inventore culpa placeat! Cum nam optio, labore, voluptas sunt
+            quam rem cupiditate laboriosam amet reiciendis velit doloribus eum!
+            Repudiandae, odio?
           </p>
           <!-- category -->
           <div class="post-category">
-            <!--<span>Category:</span> -->
+            <span>Category:</span>
           </div>
           <a href="/" class="post-read-more">Continue Reading...</a>
         </article>
@@ -75,22 +83,22 @@
           <p class="post-info">
             <span class="post-author">
               <i class="fas fa-user"></i>
-              <a href="#">Angela Chen</a>
+              <a href="#">John Doe</a>
             </span>
             <span class="post-date">
               <i class="far fa-calendar-alt"></i>
-              <time datetime="2020-01-01">December 25, 2023</time>
+              <time datetime="2020-01-01">January 1, 2020</time>
             </span>
-          </p><h1 class="post-title">Volunteer</h1>
-          <br>
+          </p><h1 class="post-title">How to Take care of Cat</h1>
           <p class="post-body">
-            Want to make a difference in the community? 
-            Our volunteer group is organizing a clean-up event at the local park this weekend. 
-            Sign up now to join us in keeping our environment clean and green!
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia
+            itaque inventore culpa placeat! Cum nam optio, labore, voluptas sunt
+            quam rem cupiditate laboriosam amet reiciendis velit doloribus eum!
+            Repudiandae, odio?
           </p>
           <!-- category -->
           <div class="post-category">
-            <!--<span>Category:</span> -->
+            <span>Category:</span>
           </div>
           <a href="/" class="post-read-more">Continue Reading...</a>
         </article>
@@ -101,31 +109,33 @@
           <p class="post-info">
             <span class="post-author">
               <i class="fas fa-user"></i>
-              <a href="#">Ping Di</a>
+              <a href="#">John Doe</a>
             </span>
             <span class="post-date">
               <i class="far fa-calendar-alt"></i>
-              <time datetime="2020-01-01">January 1, 2024</time>
+              <time datetime="2020-01-01">January 1, 2020</time>
             </span>
           </p>
-          <h1 class="post-title">RoommateSearch</h1>
-          <br>
+          <h1 class="post-title">How to Take care of Cat</h1>
           <p class="post-body">
-            Still looking for a roommate for next semester! 
-            I'm a quiet, tidy student majoring in Computer Science. 
-            If you're interested or know someone who might be, send me a message!
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia
+            itaque inventore culpa placeat! Cum nam optio, labore, voluptas sunt
+            quam rem cupiditate laboriosam amet reiciendis velit doloribus eum!
+            Repudiandae, odio?
           </p>
           <!-- category -->
           <div class="post-category">
-            <!--<span>Category:</span> -->
+            <span>Category:</span>
             
           </div>
           <a href="/" class="post-read-more">Continue Reading...</a>
-        </article>  
+        </article>
+
+        
+    
       
     </section>
     <!-- footer -->
-    <%-include('partials/footer.ejs') %>
-
+    <%-include('./partials/footer.ejs') %>
   </body>
 </html>

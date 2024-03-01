@@ -4,15 +4,15 @@
   box-sizing: border-box;
 }
 
-body::after {
-  background: #e39191;
+body {
+  background: #f1f1f1;
   font-family: "Open Sans", sans-serif;
 }
 
 .form-container {
   width: 100%;
   max-width: 500px;
-  background-image: radial-gradient(rgb(187, 70, 187), rgb(180, 180, 180));
+  background: #fff;
   margin: 7% auto;
   padding: 30px;
   border-radius: 5px;
@@ -23,23 +23,10 @@ body::after {
   align-items: center;
 }
 
-
-.form-container :before{
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right:-2px;
-  background: #fff;
-  z-index: -1;
-}
-
-
 .form-container h1 {
   text-align: center;
   margin: 10px;
   font-size: 1.6rem;
-  font-style:italic;
 }
 
 .form-container input {
@@ -48,11 +35,10 @@ body::after {
   padding: 0 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 20px;
+  font-size: 16px;
   outline: none;
   margin-bottom: 20px;
 }
-
 
 .form-container select {
   width: 100%;

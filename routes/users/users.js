@@ -37,10 +37,7 @@ userRoutes.get("/register", (req, res) => {
     });
 });
 
-//profile template
-userRoutes.get("/profile-page", (req, res) => {
-    res.render("users/profile.ejs");
-});
+
 
 //upload profile photo
 userRoutes.get("/upload-profile-photo-form", (req, res) => {
@@ -64,7 +61,7 @@ userRoutes.post("/register", upload.single("profile"), registerCtrl);
 userRoutes.post("/login", loginCtrl);
 
 //GET/profile
-userRoutes.get("/profile", protected, profileCtrl);
+userRoutes.get("/profile-page", protected, profileCtrl);
 
 //PUT/profile-photo-upload/:id
 userRoutes.put("/profile-photo-upload", protected, upload.single('profile'), uploadProfilePhotoCtrl);
@@ -78,11 +75,13 @@ userRoutes.put("/update-password/:id", updatePasswordCtrl);
 //PUT/update/:id
 userRoutes.put("/update/:id", updateUserCtrl);
 
+//GET/logout
+userRoutes.get("/logout", logoutCtrl);
+
 //GET/:id
 userRoutes.get("/:id", userDetailsCtrl);
 
-//GET/logout
-userRoutes.get("/logout", logoutCtrl);
+
 
 
 module.exports = userRoutes;

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -28,26 +29,18 @@
           <p>
             <i class="fas fa-camera upload-btn"></i>
           </p>
+
           <p>
-            <i class="fas fa-envelope"></i>
-          </p>
-          <p>
-            <i class="fas fa-lock"></i>
-          </p>
-          <p>
-            <i class="fas fa-sign-out-alt"></i>
+            <i class="fas fa-edit"></i>
           </p>
         </div>
         <!-- upload cover image icon -->
-        <i class="fas fa-camera upload-btn"></i>
+       
       </header>
 
       <!-- profile image -->
       <div class="profile-img">
-        <img
-          src="https://cdn.pixabay.com/photo/2022/09/26/04/24/swan-7479623_1280.jpg"
-          alt="profile image"
-        />
+        <img src="<%=user?.profileImage%>" alt="profile image" />
         <!-- upload profile image icon -->
         <a href = "/api/v1/users/upload-profile-photo-form">
           <i class="fas fa-camera upload-btn"></i>
@@ -59,16 +52,16 @@
         <div class="details-wrapper">
           <div class="details">
             <i class="fas fa-user"></i>
-            <p>Name: Jason Jiang</p>
+            <p>Name: <%=user?.fullname%></p>
           </div>
           <div class="details">
             <i class="fas fa-envelope"></i>
-            <p>Email: JsaonJ@gmail.com</p>
+            <p>Email: <%=user?.email%></p>
           </div>
           <!-- date joined -->
           <div class="details">
             <i class="fas fa-calendar"></i>
-            <p>Date Joined: Feb 25, 2024</p>
+            <p>Date Joined: <%=user?.createdAt.toLocaleDateString()%></p>
           </div>
         </div>
       </div>
@@ -85,7 +78,7 @@
     <section class="container-flex">
         <article class="post-content">
           
-          <!--<img src="/public/images/post3.jpg" alt="" class="post-image" /> -->
+          <img src="/images/post3.jpg" alt="" class="post-image" /> 
           <p class="post-info">
             <span class="post-author">
               <i class="fas fa-user"></i>
@@ -111,7 +104,7 @@
       
 
         <article class="post-content">
-          <!-- <img src="/public/images/post7.jpg" alt="" class="post-image" /> -->
+          <img src="/images/post7.jpg" alt="" class="post-image" /> 
           <p class="post-info">
             <span class="post-author">
               <i class="fas fa-user"></i>
@@ -137,7 +130,7 @@
 
         <article class="post-content">
           
-          <!-- <img src="/public/images/post7.jpg" alt="" class="post-image" /> -->
+          <img src="/images/post7.jpg" alt="" class="post-image" /> 
           <p class="post-info">
             <span class="post-author">
               <i class="fas fa-user"></i>
