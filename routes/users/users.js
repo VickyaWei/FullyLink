@@ -41,18 +41,18 @@ userRoutes.get("/register", (req, res) => {
 
 //upload profile photo
 userRoutes.get("/upload-profile-photo-form", (req, res) => {
-    res.render("users/uploadProfilePhoto.ejs");
+    res.render("users/uploadProfilePhoto.ejs", {error: ""});
 });
 
 //upload cover photo
 userRoutes.get("/upload-cover-photo-form", (req, res) => {
-    res.render("users/uploadCoverPhoto.ejs");
+    res.render("users/uploadCoverPhoto.ejs", {error: ""});
 });
 
 //upload user form
-userRoutes.get("/update-user-form", (req, res) => {
-    res.render("users/updateUser.ejs");
-});
+// userRoutes.get("/update-user-form", (req, res) => {
+//     res.render("users/updateUser.ejs");
+// });
 
 //POST/register
 userRoutes.post("/register", upload.single("profile"), registerCtrl);
@@ -73,7 +73,7 @@ userRoutes.put("/cover-photo-upload", protected, upload.single('profile'), uploa
 userRoutes.put("/update-password/:id", updatePasswordCtrl);
 
 //PUT/update/:id
-userRoutes.put("/update/:id", updateUserCtrl);
+userRoutes.put("/update", updateUserCtrl);
 
 //GET/logout
 userRoutes.get("/logout", logoutCtrl);

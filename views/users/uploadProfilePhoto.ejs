@@ -23,14 +23,16 @@
       <!-- icon -->
       <h1>Upload Profile photo</h1>
       <p>
-        <!-- upload icon -->
+      <!-- upload icon -->
       </p>
-        <%if(error){%>
-        <small class="error">
-          <i class="fas fa-exclamation-circle"></i>
-          <%=error%>
-        </small>
-        <%}%>
+      <!-- upload icon -->
+      <% if (typeof error !== 'undefined') { %>
+      <small class="error">
+        <i class="fas fa-exclamation-circle"></i>
+        <%= error %>
+      </small>
+      <% } %>
+
       <form 
         action="/api/v1/users/profile-photo-upload?_method=PUT" 
         method="POST"

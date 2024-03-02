@@ -22,16 +22,21 @@
     <div class="profile-container">
       <header
         style="
-          background-image: url(https://cdn.pixabay.com/photo/2021/01/24/20/21/cloud-5946381_1280.jpg);
+          background-image: url(<%=user?.coverImage%>);
         "
       >
         <div class="icons-container">
           <p>
-            <i class="fas fa-camera upload-btn"></i>
+            <!-- upload background image -->
+            <a href = "/api/v1/users/upload-cover-photo-form">
+              <i class="fas fa-camera upload-btn"></i>
+            </a>
           </p>
-
+     
           <p>
-            <i class="fas fa-edit"></i>
+            <a href = "/api/v1/users/<%=user?._id%>">
+              <i class="fas fa-edit"></i>
+            </a>
           </p>
         </div>
         <!-- upload cover image icon -->
