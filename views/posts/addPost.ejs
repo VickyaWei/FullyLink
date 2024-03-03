@@ -27,10 +27,15 @@
         <!-- add icon -->
         <i class="fas fa-plus"></i>
       </h1>
-      <small class="error">
-        <i class="fas fa-exclamation-circle"></i>
-        Invalid Credentials
-      </small>
+
+    
+      <% if(error) { %>
+        <small class="error">
+            <i class="fas fa-exclamation-circle"></i>
+            <%= error %>
+        </small> 
+      <% } %>  
+
       <form enctype = "multipart/form-data" action="/api/v1/posts" method="POST">
         <!-- Post Title -->
         <div class="input-wrapper">
@@ -43,17 +48,19 @@
         <div class="input-wrapper">
           <label for="category">Category</label>
           <select name="category" id="category">
-            <option value="1">Web Development</option>
-            <option value="2">Tech Gadgets</option>
-            <option value="3">Business</option>
-            <option value="4">Health & Wellness</option>
+            <option value="react js">React js</option>
+            <option value="html">HTML</option>
+            <option value="css">CSS</option>
+            <option value="node js">Node js</option>
+            <option value="javascript">javascript</option>
+            <option value="other">Other</option>
           </select>
           <!-- err -->
         </div>
         <div class="input-wrapper">
           <!-- Post Body -->
           <label for="body">Post Body</label>
-          <textarea name="body" id="body" cols="30" rows="10"></textarea>
+          <textarea name="description" id="body" cols="30" rows="10"></textarea>
           <!-- err -->
         </div>
         <!-- Post Image -->

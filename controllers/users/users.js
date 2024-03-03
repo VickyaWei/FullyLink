@@ -49,7 +49,9 @@ const loginCtrl = async (req, res, next) => {
 
     const {email, password}= req.body;
     if(!email || !password){
-        return next(appErr('Email and password fields are required'));
+        return res.render('users/login', {
+            error: 'Email and password fields are required',
+        });   
     }
 
     try{
@@ -93,9 +95,12 @@ const userDetailsCtrl = async (req, res) => {
         const user = await User.findById(userId);
         res.render('users/updateUser',{
             user,
+            error:"",
         })
     } catch (error) {
-        res.json(error);
+        res.render('users/updateUser',{
+            error:error.message,
+        })
     }
 };
 
@@ -202,22 +207,24 @@ const updatePasswordCtrl = async (req, res, next) => {
             const passwordHashed = await bcrypt.hash(password, salt);
             
             //update user
-            await User.findByIdAndUpdate(req.params.id, {
-                password: passwordHashed,
-            }, 
-            {  
-                new: true,
-            });
+            await User.findByIdAndUpdate(
+                req.session.userAuth,
+                {
+                    password: passwordHashed,
+                },
+                {  
+                    new: true,
+                }
+            );
 
-            res.json({
-                status: "success",
-                user: "Password has been changed successfully",
-            });
-            }
-
-
+        //redirect
+        res.redirect("/api/v1/users/profile-page");
+        }
+       
     } catch (error) {
-        return next(appErr("Please provide password field"));
+        return res.render("users/uploadProfilePhoto",{
+            error: error.message,
+        });     
     }
 };
 

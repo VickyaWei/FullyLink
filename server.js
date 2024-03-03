@@ -8,6 +8,7 @@ const postRoutes = require("./routes/posts/posts");
 const commentRoutes = require("./routes/comments/comments");
 const globalErrHandler = require("./middlewares/globalHandler");
 const Post = require("./model/post/Post");
+const multer = require('multer');
 
 require("./config/dbConnect");
 

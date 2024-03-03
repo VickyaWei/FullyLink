@@ -8,7 +8,7 @@ const createPostCtrl = async (req, res, next) => {
     const {title, description, category, image, user} = req.body;
     try{
         if(!title || !description || !category || !req.file){
-            return next(appErr("All fields are required"));
+            return res.render("posts/addPost", {error:"All fields are required"});
         }
 
         //find the user
@@ -29,13 +29,16 @@ const createPostCtrl = async (req, res, next) => {
 
         //resave
         await userFound.save();
-         
+        
+        
+        //redirect
+        res.redirect('/');
         res.json({
             status: "success",
             data: postCreated,
         });
     } catch (error) {
-        return next(appErr(error.message));
+        return res.render("posts/addPost", {error:error.message});
     }
 };
 
@@ -43,7 +46,7 @@ const createPostCtrl = async (req, res, next) => {
 //all
 const fetchPostsCtrl = async (req, res, next) => {
     try{
-        const posts = await Post.find().populate('comments');
+        const posts = await Post.find().populate('comments').populate('user');
         res.json({
             status: "success",
             data: posts,
