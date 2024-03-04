@@ -33,6 +33,7 @@ const createPostCtrl = async (req, res, next) => {
         
         //redirect
         res.redirect('/');
+         
         res.json({
             status: "success",
             data: postCreated,
@@ -66,9 +67,9 @@ const fetchPostCtrl = async (req, res, next) => {
         //find the post
         const post = await Post.findById(id).populate('comments');
 
-        res.json({
-            status: "success",
-            data: post,
+        res.render("posts/postDetails", {
+            post,
+            error: "",
         });
     } catch (error) {
        return next(appErr(error.message));

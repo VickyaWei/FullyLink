@@ -105,7 +105,7 @@
                     </span>
                     <span class="post-date">
                         <i class="far fa-calendar-alt"></i>
-                        <time datetime="2020-01-01"><%=post?.createdAt%></time>
+                        <time datetime="2020-01-01"><%=post?.createdAt.toLocaleDateString()%></time>
                     </span>
                 </p>
                 <h1 class="post-title">
@@ -114,7 +114,7 @@
                 <br>
     
                 <p class="post-body">
-                    <%=post.description%>
+                    <%=truncatePost(post?.description)%>
                 <br>
                 </p>
                 <!-- category -->
